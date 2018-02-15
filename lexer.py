@@ -93,6 +93,7 @@ def t_newline(t):
 
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
+    # Break program when error is found
     t.lexer.skip(1)
 
 t_ignore = " \t"

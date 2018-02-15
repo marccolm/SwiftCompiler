@@ -1,0 +1,16 @@
+// This is a comment
+/* This is also a comment */
+var x = true;
+let y = false;
+var z = "This is a string";
+var a = 10;
+var i = 0;
+while(i < a){
+    print("This is a loop");
+    i = i + 1;
+}
+if (y == true){
+    print("Y is true");
+}
+z = readLine();
+print(z);
