@@ -1,0 +1,2647 @@
+Created by PLY version 3.8 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BOOL
+
+Grammar
+
+Rule 0     S' -> codeLine
+Rule 1     codeLine -> suite
+Rule 2     suite -> stmt
+Rule 3     suite -> stmt suite
+Rule 4     stmt -> exprStmt
+Rule 5     stmt -> declar SEMCOL
+Rule 6     stmt -> call SEMCOL
+Rule 7     stmt -> selectionStmt
+Rule 8     stmt -> iterationStmt
+Rule 9     stmt -> returnStmt SEMCOL
+Rule 10    stmt -> inputStmt SEMCOL
+Rule 11    stmt -> outputStmt SEMCOL
+Rule 12    stmt -> lineComment
+Rule 13    stmt -> blockComment
+Rule 14    declar -> varDeclar SEMCOL
+Rule 15    declar -> funcDeclar
+Rule 16    varDeclar -> VAR ID ASSIGN STRING
+Rule 17    varDeclar -> LET ID ASSIGN STRING
+Rule 18    varDeclar -> ID ASSIGN exprStmt
+Rule 19    funcDeclar -> FUNC ID LPARENT RPARENT LBRACK suite RBRACK
+Rule 20    funcDeclar -> FUNC ID LPARENT params RPARENT LBRACK suite RBRACK
+Rule 21    params -> paramsList
+Rule 22    paramsList -> ID COMA paramsList
+Rule 23    paramsList -> ID
+Rule 24    call -> ID
+Rule 25    call -> ID POINT call
+Rule 26    call -> ID LPARENT RPARENT
+Rule 27    call -> ID LPARENT params RPARENT
+Rule 28    call -> call POINT call
+Rule 29    exprStmt -> simpleExpr
+Rule 30    selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+Rule 31    selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+Rule 32    iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+Rule 33    returnStmt -> RETURN
+Rule 34    returnStmt -> RETURN simpleExpr
+Rule 35    simpleExpr -> simpleExpr OR andExpr
+Rule 36    simpleExpr -> andExpr
+Rule 37    andExpr -> andExpr AND unaryRelExpr
+Rule 38    andExpr -> unaryRelExpr
+Rule 39    unaryRelExpr -> NOT unaryRelExpr
+Rule 40    unaryRelExpr -> relExpr
+Rule 41    relExpr -> sumExpr relop sumExpr
+Rule 42    relExpr -> sumExpr
+Rule 43    relop -> LOET
+Rule 44    relop -> LT
+Rule 45    relop -> GOET
+Rule 46    relop -> GT
+Rule 47    relop -> EQ
+Rule 48    relop -> NEQ
+Rule 49    sumExpr -> sumExpr sumop term
+Rule 50    sumExpr -> term
+Rule 51    sumop -> SUM
+Rule 52    sumop -> SUBST
+Rule 53    term -> term mulop opElement
+Rule 54    term -> opElement
+Rule 55    opElement -> call
+Rule 56    opElement -> NUMBER
+Rule 57    mulop -> PROD
+Rule 58    mulop -> DIV
+Rule 59    inputStmt -> READLINE LPARENT RPARENT
+Rule 60    outputStmt -> PRINT LPARENT STRING RPARENT
+Rule 61    lineComment -> LINE_COMMENT
+Rule 62    blockComment -> BLOCK_COMMENT
+
+Terminals, with rules where they appear
+
+AND                  : 37
+ASSIGN               : 16 17 18
+BLOCK_COMMENT        : 62
+BOOL                 : 
+COMA                 : 22
+DIV                  : 58
+ELSE                 : 31
+EQ                   : 47
+FUNC                 : 19 20
+GOET                 : 45
+GT                   : 46
+ID                   : 16 17 18 19 20 22 23 24 25 26 27
+IF                   : 30 31
+LBRACK               : 19 20 30 31 31 32
+LET                  : 17
+LINE_COMMENT         : 61
+LOET                 : 43
+LPARENT              : 19 20 26 27 30 31 32 59 60
+LT                   : 44
+NEQ                  : 48
+NOT                  : 39
+NUMBER               : 56
+OR                   : 35
+POINT                : 25 28
+PRINT                : 60
+PROD                 : 57
+RBRACK               : 19 20 30 31 31 32
+READLINE             : 59
+RETURN               : 33 34
+RPARENT              : 19 20 26 27 30 31 32 59 60
+SEMCOL               : 5 6 9 10 11 14
+STRING               : 16 17 60
+SUBST                : 52
+SUM                  : 51
+VAR                  : 16
+WHILE                : 32
+error                : 
+
+Nonterminals, with rules where they appear
+
+andExpr              : 35 36 37
+blockComment         : 13
+call                 : 6 25 28 28 55
+codeLine             : 0
+declar               : 5
+exprStmt             : 4 18
+funcDeclar           : 15
+inputStmt            : 10
+iterationStmt        : 8
+lineComment          : 12
+mulop                : 53
+opElement            : 53 54
+outputStmt           : 11
+params               : 20 27
+paramsList           : 21 22
+relExpr              : 40
+relop                : 41
+returnStmt           : 9
+selectionStmt        : 7
+simpleExpr           : 29 30 31 32 34 35
+stmt                 : 2 3
+suite                : 1 3 19 20 30 31 31 32
+sumExpr              : 41 41 42 49
+sumop                : 49
+term                 : 49 50 53
+unaryRelExpr         : 37 38 39
+varDeclar            : 14
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . codeLine
+    (1) codeLine -> . suite
+    (2) suite -> . stmt
+    (3) suite -> . stmt suite
+    (4) stmt -> . exprStmt
+    (5) stmt -> . declar SEMCOL
+    (6) stmt -> . call SEMCOL
+    (7) stmt -> . selectionStmt
+    (8) stmt -> . iterationStmt
+    (9) stmt -> . returnStmt SEMCOL
+    (10) stmt -> . inputStmt SEMCOL
+    (11) stmt -> . outputStmt SEMCOL
+    (12) stmt -> . lineComment
+    (13) stmt -> . blockComment
+    (29) exprStmt -> . simpleExpr
+    (14) declar -> . varDeclar SEMCOL
+    (15) declar -> . funcDeclar
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+    (30) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (32) iterationStmt -> . WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (33) returnStmt -> . RETURN
+    (34) returnStmt -> . RETURN simpleExpr
+    (59) inputStmt -> . READLINE LPARENT RPARENT
+    (60) outputStmt -> . PRINT LPARENT STRING RPARENT
+    (61) lineComment -> . LINE_COMMENT
+    (62) blockComment -> . BLOCK_COMMENT
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (16) varDeclar -> . VAR ID ASSIGN STRING
+    (17) varDeclar -> . LET ID ASSIGN STRING
+    (18) varDeclar -> . ID ASSIGN exprStmt
+    (19) funcDeclar -> . FUNC ID LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> . FUNC ID LPARENT params RPARENT LBRACK suite RBRACK
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+
+    ID              shift and go to state 24
+    IF              shift and go to state 23
+    WHILE           shift and go to state 34
+    RETURN          shift and go to state 35
+    READLINE        shift and go to state 14
+    PRINT           shift and go to state 32
+    LINE_COMMENT    shift and go to state 26
+    BLOCK_COMMENT   shift and go to state 18
+    VAR             shift and go to state 33
+    LET             shift and go to state 19
+    FUNC            shift and go to state 27
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+
+    exprStmt                       shift and go to state 1
+    funcDeclar                     shift and go to state 16
+    codeLine                       shift and go to state 22
+    suite                          shift and go to state 2
+    outputStmt                     shift and go to state 4
+    blockComment                   shift and go to state 5
+    returnStmt                     shift and go to state 7
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    opElement                      shift and go to state 11
+    varDeclar                      shift and go to state 12
+    call                           shift and go to state 28
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    inputStmt                      shift and go to state 31
+    selectionStmt                  shift and go to state 29
+    stmt                           shift and go to state 17
+    iterationStmt                  shift and go to state 25
+    simpleExpr                     shift and go to state 6
+    declar                         shift and go to state 20
+    lineComment                    shift and go to state 21
+    andExpr                        shift and go to state 30
+
+state 1
+
+    (4) stmt -> exprStmt .
+
+    ID              reduce using rule 4 (stmt -> exprStmt .)
+    IF              reduce using rule 4 (stmt -> exprStmt .)
+    WHILE           reduce using rule 4 (stmt -> exprStmt .)
+    RETURN          reduce using rule 4 (stmt -> exprStmt .)
+    READLINE        reduce using rule 4 (stmt -> exprStmt .)
+    PRINT           reduce using rule 4 (stmt -> exprStmt .)
+    LINE_COMMENT    reduce using rule 4 (stmt -> exprStmt .)
+    BLOCK_COMMENT   reduce using rule 4 (stmt -> exprStmt .)
+    VAR             reduce using rule 4 (stmt -> exprStmt .)
+    LET             reduce using rule 4 (stmt -> exprStmt .)
+    FUNC            reduce using rule 4 (stmt -> exprStmt .)
+    NOT             reduce using rule 4 (stmt -> exprStmt .)
+    NUMBER          reduce using rule 4 (stmt -> exprStmt .)
+    RBRACK          reduce using rule 4 (stmt -> exprStmt .)
+    $end            reduce using rule 4 (stmt -> exprStmt .)
+
+
+state 2
+
+    (1) codeLine -> suite .
+
+    $end            reduce using rule 1 (codeLine -> suite .)
+
+
+state 3
+
+    (41) relExpr -> sumExpr . relop sumExpr
+    (42) relExpr -> sumExpr .
+    (49) sumExpr -> sumExpr . sumop term
+    (43) relop -> . LOET
+    (44) relop -> . LT
+    (45) relop -> . GOET
+    (46) relop -> . GT
+    (47) relop -> . EQ
+    (48) relop -> . NEQ
+    (51) sumop -> . SUM
+    (52) sumop -> . SUBST
+
+    AND             reduce using rule 42 (relExpr -> sumExpr .)
+    OR              reduce using rule 42 (relExpr -> sumExpr .)
+    SEMCOL          reduce using rule 42 (relExpr -> sumExpr .)
+    RPARENT         reduce using rule 42 (relExpr -> sumExpr .)
+    ID              reduce using rule 42 (relExpr -> sumExpr .)
+    IF              reduce using rule 42 (relExpr -> sumExpr .)
+    WHILE           reduce using rule 42 (relExpr -> sumExpr .)
+    RETURN          reduce using rule 42 (relExpr -> sumExpr .)
+    READLINE        reduce using rule 42 (relExpr -> sumExpr .)
+    PRINT           reduce using rule 42 (relExpr -> sumExpr .)
+    LINE_COMMENT    reduce using rule 42 (relExpr -> sumExpr .)
+    BLOCK_COMMENT   reduce using rule 42 (relExpr -> sumExpr .)
+    VAR             reduce using rule 42 (relExpr -> sumExpr .)
+    LET             reduce using rule 42 (relExpr -> sumExpr .)
+    FUNC            reduce using rule 42 (relExpr -> sumExpr .)
+    NOT             reduce using rule 42 (relExpr -> sumExpr .)
+    NUMBER          reduce using rule 42 (relExpr -> sumExpr .)
+    $end            reduce using rule 42 (relExpr -> sumExpr .)
+    RBRACK          reduce using rule 42 (relExpr -> sumExpr .)
+    LOET            shift and go to state 42
+    LT              shift and go to state 39
+    GOET            shift and go to state 38
+    GT              shift and go to state 36
+    EQ              shift and go to state 44
+    NEQ             shift and go to state 45
+    SUM             shift and go to state 37
+    SUBST           shift and go to state 43
+
+    relop                          shift and go to state 40
+    sumop                          shift and go to state 41
+
+state 4
+
+    (11) stmt -> outputStmt . SEMCOL
+
+    SEMCOL          shift and go to state 46
+
+
+state 5
+
+    (13) stmt -> blockComment .
+
+    ID              reduce using rule 13 (stmt -> blockComment .)
+    IF              reduce using rule 13 (stmt -> blockComment .)
+    WHILE           reduce using rule 13 (stmt -> blockComment .)
+    RETURN          reduce using rule 13 (stmt -> blockComment .)
+    READLINE        reduce using rule 13 (stmt -> blockComment .)
+    PRINT           reduce using rule 13 (stmt -> blockComment .)
+    LINE_COMMENT    reduce using rule 13 (stmt -> blockComment .)
+    BLOCK_COMMENT   reduce using rule 13 (stmt -> blockComment .)
+    VAR             reduce using rule 13 (stmt -> blockComment .)
+    LET             reduce using rule 13 (stmt -> blockComment .)
+    FUNC            reduce using rule 13 (stmt -> blockComment .)
+    NOT             reduce using rule 13 (stmt -> blockComment .)
+    NUMBER          reduce using rule 13 (stmt -> blockComment .)
+    RBRACK          reduce using rule 13 (stmt -> blockComment .)
+    $end            reduce using rule 13 (stmt -> blockComment .)
+
+
+state 6
+
+    (29) exprStmt -> simpleExpr .
+    (35) simpleExpr -> simpleExpr . OR andExpr
+
+    ID              reduce using rule 29 (exprStmt -> simpleExpr .)
+    IF              reduce using rule 29 (exprStmt -> simpleExpr .)
+    WHILE           reduce using rule 29 (exprStmt -> simpleExpr .)
+    RETURN          reduce using rule 29 (exprStmt -> simpleExpr .)
+    READLINE        reduce using rule 29 (exprStmt -> simpleExpr .)
+    PRINT           reduce using rule 29 (exprStmt -> simpleExpr .)
+    LINE_COMMENT    reduce using rule 29 (exprStmt -> simpleExpr .)
+    BLOCK_COMMENT   reduce using rule 29 (exprStmt -> simpleExpr .)
+    VAR             reduce using rule 29 (exprStmt -> simpleExpr .)
+    LET             reduce using rule 29 (exprStmt -> simpleExpr .)
+    FUNC            reduce using rule 29 (exprStmt -> simpleExpr .)
+    NOT             reduce using rule 29 (exprStmt -> simpleExpr .)
+    NUMBER          reduce using rule 29 (exprStmt -> simpleExpr .)
+    RBRACK          reduce using rule 29 (exprStmt -> simpleExpr .)
+    $end            reduce using rule 29 (exprStmt -> simpleExpr .)
+    SEMCOL          reduce using rule 29 (exprStmt -> simpleExpr .)
+    OR              shift and go to state 47
+
+
+state 7
+
+    (9) stmt -> returnStmt . SEMCOL
+
+    SEMCOL          shift and go to state 48
+
+
+state 8
+
+    (56) opElement -> NUMBER .
+
+    PROD            reduce using rule 56 (opElement -> NUMBER .)
+    DIV             reduce using rule 56 (opElement -> NUMBER .)
+    LOET            reduce using rule 56 (opElement -> NUMBER .)
+    LT              reduce using rule 56 (opElement -> NUMBER .)
+    GOET            reduce using rule 56 (opElement -> NUMBER .)
+    GT              reduce using rule 56 (opElement -> NUMBER .)
+    EQ              reduce using rule 56 (opElement -> NUMBER .)
+    NEQ             reduce using rule 56 (opElement -> NUMBER .)
+    SUM             reduce using rule 56 (opElement -> NUMBER .)
+    SUBST           reduce using rule 56 (opElement -> NUMBER .)
+    AND             reduce using rule 56 (opElement -> NUMBER .)
+    OR              reduce using rule 56 (opElement -> NUMBER .)
+    SEMCOL          reduce using rule 56 (opElement -> NUMBER .)
+    ID              reduce using rule 56 (opElement -> NUMBER .)
+    IF              reduce using rule 56 (opElement -> NUMBER .)
+    WHILE           reduce using rule 56 (opElement -> NUMBER .)
+    RETURN          reduce using rule 56 (opElement -> NUMBER .)
+    READLINE        reduce using rule 56 (opElement -> NUMBER .)
+    PRINT           reduce using rule 56 (opElement -> NUMBER .)
+    LINE_COMMENT    reduce using rule 56 (opElement -> NUMBER .)
+    BLOCK_COMMENT   reduce using rule 56 (opElement -> NUMBER .)
+    VAR             reduce using rule 56 (opElement -> NUMBER .)
+    LET             reduce using rule 56 (opElement -> NUMBER .)
+    FUNC            reduce using rule 56 (opElement -> NUMBER .)
+    NOT             reduce using rule 56 (opElement -> NUMBER .)
+    NUMBER          reduce using rule 56 (opElement -> NUMBER .)
+    $end            reduce using rule 56 (opElement -> NUMBER .)
+    RBRACK          reduce using rule 56 (opElement -> NUMBER .)
+    RPARENT         reduce using rule 56 (opElement -> NUMBER .)
+
+
+state 9
+
+    (50) sumExpr -> term .
+    (53) term -> term . mulop opElement
+    (57) mulop -> . PROD
+    (58) mulop -> . DIV
+
+    LOET            reduce using rule 50 (sumExpr -> term .)
+    LT              reduce using rule 50 (sumExpr -> term .)
+    GOET            reduce using rule 50 (sumExpr -> term .)
+    GT              reduce using rule 50 (sumExpr -> term .)
+    EQ              reduce using rule 50 (sumExpr -> term .)
+    NEQ             reduce using rule 50 (sumExpr -> term .)
+    SUM             reduce using rule 50 (sumExpr -> term .)
+    SUBST           reduce using rule 50 (sumExpr -> term .)
+    AND             reduce using rule 50 (sumExpr -> term .)
+    RPARENT         reduce using rule 50 (sumExpr -> term .)
+    OR              reduce using rule 50 (sumExpr -> term .)
+    ID              reduce using rule 50 (sumExpr -> term .)
+    IF              reduce using rule 50 (sumExpr -> term .)
+    WHILE           reduce using rule 50 (sumExpr -> term .)
+    RETURN          reduce using rule 50 (sumExpr -> term .)
+    READLINE        reduce using rule 50 (sumExpr -> term .)
+    PRINT           reduce using rule 50 (sumExpr -> term .)
+    LINE_COMMENT    reduce using rule 50 (sumExpr -> term .)
+    BLOCK_COMMENT   reduce using rule 50 (sumExpr -> term .)
+    VAR             reduce using rule 50 (sumExpr -> term .)
+    LET             reduce using rule 50 (sumExpr -> term .)
+    FUNC            reduce using rule 50 (sumExpr -> term .)
+    NOT             reduce using rule 50 (sumExpr -> term .)
+    NUMBER          reduce using rule 50 (sumExpr -> term .)
+    RBRACK          reduce using rule 50 (sumExpr -> term .)
+    $end            reduce using rule 50 (sumExpr -> term .)
+    SEMCOL          reduce using rule 50 (sumExpr -> term .)
+    PROD            shift and go to state 50
+    DIV             shift and go to state 51
+
+    mulop                          shift and go to state 49
+
+state 10
+
+    (38) andExpr -> unaryRelExpr .
+
+    AND             reduce using rule 38 (andExpr -> unaryRelExpr .)
+    RPARENT         reduce using rule 38 (andExpr -> unaryRelExpr .)
+    OR              reduce using rule 38 (andExpr -> unaryRelExpr .)
+    ID              reduce using rule 38 (andExpr -> unaryRelExpr .)
+    IF              reduce using rule 38 (andExpr -> unaryRelExpr .)
+    WHILE           reduce using rule 38 (andExpr -> unaryRelExpr .)
+    RETURN          reduce using rule 38 (andExpr -> unaryRelExpr .)
+    READLINE        reduce using rule 38 (andExpr -> unaryRelExpr .)
+    PRINT           reduce using rule 38 (andExpr -> unaryRelExpr .)
+    LINE_COMMENT    reduce using rule 38 (andExpr -> unaryRelExpr .)
+    BLOCK_COMMENT   reduce using rule 38 (andExpr -> unaryRelExpr .)
+    VAR             reduce using rule 38 (andExpr -> unaryRelExpr .)
+    LET             reduce using rule 38 (andExpr -> unaryRelExpr .)
+    FUNC            reduce using rule 38 (andExpr -> unaryRelExpr .)
+    NOT             reduce using rule 38 (andExpr -> unaryRelExpr .)
+    NUMBER          reduce using rule 38 (andExpr -> unaryRelExpr .)
+    RBRACK          reduce using rule 38 (andExpr -> unaryRelExpr .)
+    $end            reduce using rule 38 (andExpr -> unaryRelExpr .)
+    SEMCOL          reduce using rule 38 (andExpr -> unaryRelExpr .)
+
+
+state 11
+
+    (54) term -> opElement .
+
+    PROD            reduce using rule 54 (term -> opElement .)
+    DIV             reduce using rule 54 (term -> opElement .)
+    LOET            reduce using rule 54 (term -> opElement .)
+    LT              reduce using rule 54 (term -> opElement .)
+    GOET            reduce using rule 54 (term -> opElement .)
+    GT              reduce using rule 54 (term -> opElement .)
+    EQ              reduce using rule 54 (term -> opElement .)
+    NEQ             reduce using rule 54 (term -> opElement .)
+    SUM             reduce using rule 54 (term -> opElement .)
+    SUBST           reduce using rule 54 (term -> opElement .)
+    AND             reduce using rule 54 (term -> opElement .)
+    OR              reduce using rule 54 (term -> opElement .)
+    ID              reduce using rule 54 (term -> opElement .)
+    IF              reduce using rule 54 (term -> opElement .)
+    WHILE           reduce using rule 54 (term -> opElement .)
+    RETURN          reduce using rule 54 (term -> opElement .)
+    READLINE        reduce using rule 54 (term -> opElement .)
+    PRINT           reduce using rule 54 (term -> opElement .)
+    LINE_COMMENT    reduce using rule 54 (term -> opElement .)
+    BLOCK_COMMENT   reduce using rule 54 (term -> opElement .)
+    VAR             reduce using rule 54 (term -> opElement .)
+    LET             reduce using rule 54 (term -> opElement .)
+    FUNC            reduce using rule 54 (term -> opElement .)
+    NOT             reduce using rule 54 (term -> opElement .)
+    NUMBER          reduce using rule 54 (term -> opElement .)
+    $end            reduce using rule 54 (term -> opElement .)
+    RBRACK          reduce using rule 54 (term -> opElement .)
+    SEMCOL          reduce using rule 54 (term -> opElement .)
+    RPARENT         reduce using rule 54 (term -> opElement .)
+
+
+state 12
+
+    (14) declar -> varDeclar . SEMCOL
+
+    SEMCOL          shift and go to state 52
+
+
+state 13
+
+    (39) unaryRelExpr -> NOT . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    relExpr                        shift and go to state 15
+    opElement                      shift and go to state 11
+    call                           shift and go to state 53
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 55
+    sumExpr                        shift and go to state 3
+
+state 14
+
+    (59) inputStmt -> READLINE . LPARENT RPARENT
+
+    LPARENT         shift and go to state 56
+
+
+state 15
+
+    (40) unaryRelExpr -> relExpr .
+
+    AND             reduce using rule 40 (unaryRelExpr -> relExpr .)
+    RPARENT         reduce using rule 40 (unaryRelExpr -> relExpr .)
+    OR              reduce using rule 40 (unaryRelExpr -> relExpr .)
+    SEMCOL          reduce using rule 40 (unaryRelExpr -> relExpr .)
+    ID              reduce using rule 40 (unaryRelExpr -> relExpr .)
+    IF              reduce using rule 40 (unaryRelExpr -> relExpr .)
+    WHILE           reduce using rule 40 (unaryRelExpr -> relExpr .)
+    RETURN          reduce using rule 40 (unaryRelExpr -> relExpr .)
+    READLINE        reduce using rule 40 (unaryRelExpr -> relExpr .)
+    PRINT           reduce using rule 40 (unaryRelExpr -> relExpr .)
+    LINE_COMMENT    reduce using rule 40 (unaryRelExpr -> relExpr .)
+    BLOCK_COMMENT   reduce using rule 40 (unaryRelExpr -> relExpr .)
+    VAR             reduce using rule 40 (unaryRelExpr -> relExpr .)
+    LET             reduce using rule 40 (unaryRelExpr -> relExpr .)
+    FUNC            reduce using rule 40 (unaryRelExpr -> relExpr .)
+    NOT             reduce using rule 40 (unaryRelExpr -> relExpr .)
+    NUMBER          reduce using rule 40 (unaryRelExpr -> relExpr .)
+    $end            reduce using rule 40 (unaryRelExpr -> relExpr .)
+    RBRACK          reduce using rule 40 (unaryRelExpr -> relExpr .)
+
+
+state 16
+
+    (15) declar -> funcDeclar .
+
+    SEMCOL          reduce using rule 15 (declar -> funcDeclar .)
+
+
+state 17
+
+    (2) suite -> stmt .
+    (3) suite -> stmt . suite
+    (2) suite -> . stmt
+    (3) suite -> . stmt suite
+    (4) stmt -> . exprStmt
+    (5) stmt -> . declar SEMCOL
+    (6) stmt -> . call SEMCOL
+    (7) stmt -> . selectionStmt
+    (8) stmt -> . iterationStmt
+    (9) stmt -> . returnStmt SEMCOL
+    (10) stmt -> . inputStmt SEMCOL
+    (11) stmt -> . outputStmt SEMCOL
+    (12) stmt -> . lineComment
+    (13) stmt -> . blockComment
+    (29) exprStmt -> . simpleExpr
+    (14) declar -> . varDeclar SEMCOL
+    (15) declar -> . funcDeclar
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+    (30) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (32) iterationStmt -> . WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (33) returnStmt -> . RETURN
+    (34) returnStmt -> . RETURN simpleExpr
+    (59) inputStmt -> . READLINE LPARENT RPARENT
+    (60) outputStmt -> . PRINT LPARENT STRING RPARENT
+    (61) lineComment -> . LINE_COMMENT
+    (62) blockComment -> . BLOCK_COMMENT
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (16) varDeclar -> . VAR ID ASSIGN STRING
+    (17) varDeclar -> . LET ID ASSIGN STRING
+    (18) varDeclar -> . ID ASSIGN exprStmt
+    (19) funcDeclar -> . FUNC ID LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> . FUNC ID LPARENT params RPARENT LBRACK suite RBRACK
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+
+    RBRACK          reduce using rule 2 (suite -> stmt .)
+    $end            reduce using rule 2 (suite -> stmt .)
+    ID              shift and go to state 24
+    IF              shift and go to state 23
+    WHILE           shift and go to state 34
+    RETURN          shift and go to state 35
+    READLINE        shift and go to state 14
+    PRINT           shift and go to state 32
+    LINE_COMMENT    shift and go to state 26
+    BLOCK_COMMENT   shift and go to state 18
+    VAR             shift and go to state 33
+    LET             shift and go to state 19
+    FUNC            shift and go to state 27
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+
+    exprStmt                       shift and go to state 1
+    funcDeclar                     shift and go to state 16
+    opElement                      shift and go to state 11
+    suite                          shift and go to state 57
+    outputStmt                     shift and go to state 4
+    blockComment                   shift and go to state 5
+    returnStmt                     shift and go to state 7
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    varDeclar                      shift and go to state 12
+    call                           shift and go to state 28
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    inputStmt                      shift and go to state 31
+    selectionStmt                  shift and go to state 29
+    stmt                           shift and go to state 17
+    iterationStmt                  shift and go to state 25
+    simpleExpr                     shift and go to state 6
+    declar                         shift and go to state 20
+    lineComment                    shift and go to state 21
+    andExpr                        shift and go to state 30
+
+state 18
+
+    (62) blockComment -> BLOCK_COMMENT .
+
+    ID              reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    IF              reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    WHILE           reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    RETURN          reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    READLINE        reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    PRINT           reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    LINE_COMMENT    reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    BLOCK_COMMENT   reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    VAR             reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    LET             reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    FUNC            reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    NOT             reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    NUMBER          reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    RBRACK          reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+    $end            reduce using rule 62 (blockComment -> BLOCK_COMMENT .)
+
+
+state 19
+
+    (17) varDeclar -> LET . ID ASSIGN STRING
+
+    ID              shift and go to state 58
+
+
+state 20
+
+    (5) stmt -> declar . SEMCOL
+
+    SEMCOL          shift and go to state 59
+
+
+state 21
+
+    (12) stmt -> lineComment .
+
+    ID              reduce using rule 12 (stmt -> lineComment .)
+    IF              reduce using rule 12 (stmt -> lineComment .)
+    WHILE           reduce using rule 12 (stmt -> lineComment .)
+    RETURN          reduce using rule 12 (stmt -> lineComment .)
+    READLINE        reduce using rule 12 (stmt -> lineComment .)
+    PRINT           reduce using rule 12 (stmt -> lineComment .)
+    LINE_COMMENT    reduce using rule 12 (stmt -> lineComment .)
+    BLOCK_COMMENT   reduce using rule 12 (stmt -> lineComment .)
+    VAR             reduce using rule 12 (stmt -> lineComment .)
+    LET             reduce using rule 12 (stmt -> lineComment .)
+    FUNC            reduce using rule 12 (stmt -> lineComment .)
+    NOT             reduce using rule 12 (stmt -> lineComment .)
+    NUMBER          reduce using rule 12 (stmt -> lineComment .)
+    RBRACK          reduce using rule 12 (stmt -> lineComment .)
+    $end            reduce using rule 12 (stmt -> lineComment .)
+
+
+state 22
+
+    (0) S' -> codeLine .
+
+
+
+state 23
+
+    (30) selectionStmt -> IF . LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> IF . LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+
+    LPARENT         shift and go to state 60
+
+
+state 24
+
+    (24) call -> ID .
+    (25) call -> ID . POINT call
+    (26) call -> ID . LPARENT RPARENT
+    (27) call -> ID . LPARENT params RPARENT
+    (18) varDeclar -> ID . ASSIGN exprStmt
+
+  ! shift/reduce conflict for POINT resolved as shift
+    SEMCOL          reduce using rule 24 (call -> ID .)
+    PROD            reduce using rule 24 (call -> ID .)
+    DIV             reduce using rule 24 (call -> ID .)
+    LOET            reduce using rule 24 (call -> ID .)
+    LT              reduce using rule 24 (call -> ID .)
+    GOET            reduce using rule 24 (call -> ID .)
+    GT              reduce using rule 24 (call -> ID .)
+    EQ              reduce using rule 24 (call -> ID .)
+    NEQ             reduce using rule 24 (call -> ID .)
+    SUM             reduce using rule 24 (call -> ID .)
+    SUBST           reduce using rule 24 (call -> ID .)
+    AND             reduce using rule 24 (call -> ID .)
+    OR              reduce using rule 24 (call -> ID .)
+    ID              reduce using rule 24 (call -> ID .)
+    IF              reduce using rule 24 (call -> ID .)
+    WHILE           reduce using rule 24 (call -> ID .)
+    RETURN          reduce using rule 24 (call -> ID .)
+    READLINE        reduce using rule 24 (call -> ID .)
+    PRINT           reduce using rule 24 (call -> ID .)
+    LINE_COMMENT    reduce using rule 24 (call -> ID .)
+    BLOCK_COMMENT   reduce using rule 24 (call -> ID .)
+    VAR             reduce using rule 24 (call -> ID .)
+    LET             reduce using rule 24 (call -> ID .)
+    FUNC            reduce using rule 24 (call -> ID .)
+    NOT             reduce using rule 24 (call -> ID .)
+    NUMBER          reduce using rule 24 (call -> ID .)
+    $end            reduce using rule 24 (call -> ID .)
+    RBRACK          reduce using rule 24 (call -> ID .)
+    POINT           shift and go to state 61
+    LPARENT         shift and go to state 62
+    ASSIGN          shift and go to state 63
+
+  ! POINT           [ reduce using rule 24 (call -> ID .) ]
+
+
+state 25
+
+    (8) stmt -> iterationStmt .
+
+    ID              reduce using rule 8 (stmt -> iterationStmt .)
+    IF              reduce using rule 8 (stmt -> iterationStmt .)
+    WHILE           reduce using rule 8 (stmt -> iterationStmt .)
+    RETURN          reduce using rule 8 (stmt -> iterationStmt .)
+    READLINE        reduce using rule 8 (stmt -> iterationStmt .)
+    PRINT           reduce using rule 8 (stmt -> iterationStmt .)
+    LINE_COMMENT    reduce using rule 8 (stmt -> iterationStmt .)
+    BLOCK_COMMENT   reduce using rule 8 (stmt -> iterationStmt .)
+    VAR             reduce using rule 8 (stmt -> iterationStmt .)
+    LET             reduce using rule 8 (stmt -> iterationStmt .)
+    FUNC            reduce using rule 8 (stmt -> iterationStmt .)
+    NOT             reduce using rule 8 (stmt -> iterationStmt .)
+    NUMBER          reduce using rule 8 (stmt -> iterationStmt .)
+    RBRACK          reduce using rule 8 (stmt -> iterationStmt .)
+    $end            reduce using rule 8 (stmt -> iterationStmt .)
+
+
+state 26
+
+    (61) lineComment -> LINE_COMMENT .
+
+    ID              reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    IF              reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    WHILE           reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    RETURN          reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    READLINE        reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    PRINT           reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    LINE_COMMENT    reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    BLOCK_COMMENT   reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    VAR             reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    LET             reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    FUNC            reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    NOT             reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    NUMBER          reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    $end            reduce using rule 61 (lineComment -> LINE_COMMENT .)
+    RBRACK          reduce using rule 61 (lineComment -> LINE_COMMENT .)
+
+
+state 27
+
+    (19) funcDeclar -> FUNC . ID LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> FUNC . ID LPARENT params RPARENT LBRACK suite RBRACK
+
+    ID              shift and go to state 64
+
+
+state 28
+
+    (6) stmt -> call . SEMCOL
+    (28) call -> call . POINT call
+    (55) opElement -> call .
+
+    SEMCOL          shift and go to state 65
+    POINT           shift and go to state 66
+    PROD            reduce using rule 55 (opElement -> call .)
+    DIV             reduce using rule 55 (opElement -> call .)
+    LOET            reduce using rule 55 (opElement -> call .)
+    LT              reduce using rule 55 (opElement -> call .)
+    GOET            reduce using rule 55 (opElement -> call .)
+    GT              reduce using rule 55 (opElement -> call .)
+    EQ              reduce using rule 55 (opElement -> call .)
+    NEQ             reduce using rule 55 (opElement -> call .)
+    SUM             reduce using rule 55 (opElement -> call .)
+    SUBST           reduce using rule 55 (opElement -> call .)
+    AND             reduce using rule 55 (opElement -> call .)
+    OR              reduce using rule 55 (opElement -> call .)
+    ID              reduce using rule 55 (opElement -> call .)
+    IF              reduce using rule 55 (opElement -> call .)
+    WHILE           reduce using rule 55 (opElement -> call .)
+    RETURN          reduce using rule 55 (opElement -> call .)
+    READLINE        reduce using rule 55 (opElement -> call .)
+    PRINT           reduce using rule 55 (opElement -> call .)
+    LINE_COMMENT    reduce using rule 55 (opElement -> call .)
+    BLOCK_COMMENT   reduce using rule 55 (opElement -> call .)
+    VAR             reduce using rule 55 (opElement -> call .)
+    LET             reduce using rule 55 (opElement -> call .)
+    FUNC            reduce using rule 55 (opElement -> call .)
+    NOT             reduce using rule 55 (opElement -> call .)
+    NUMBER          reduce using rule 55 (opElement -> call .)
+    $end            reduce using rule 55 (opElement -> call .)
+    RBRACK          reduce using rule 55 (opElement -> call .)
+
+
+state 29
+
+    (7) stmt -> selectionStmt .
+
+    ID              reduce using rule 7 (stmt -> selectionStmt .)
+    IF              reduce using rule 7 (stmt -> selectionStmt .)
+    WHILE           reduce using rule 7 (stmt -> selectionStmt .)
+    RETURN          reduce using rule 7 (stmt -> selectionStmt .)
+    READLINE        reduce using rule 7 (stmt -> selectionStmt .)
+    PRINT           reduce using rule 7 (stmt -> selectionStmt .)
+    LINE_COMMENT    reduce using rule 7 (stmt -> selectionStmt .)
+    BLOCK_COMMENT   reduce using rule 7 (stmt -> selectionStmt .)
+    VAR             reduce using rule 7 (stmt -> selectionStmt .)
+    LET             reduce using rule 7 (stmt -> selectionStmt .)
+    FUNC            reduce using rule 7 (stmt -> selectionStmt .)
+    NOT             reduce using rule 7 (stmt -> selectionStmt .)
+    NUMBER          reduce using rule 7 (stmt -> selectionStmt .)
+    RBRACK          reduce using rule 7 (stmt -> selectionStmt .)
+    $end            reduce using rule 7 (stmt -> selectionStmt .)
+
+
+state 30
+
+    (36) simpleExpr -> andExpr .
+    (37) andExpr -> andExpr . AND unaryRelExpr
+
+    OR              reduce using rule 36 (simpleExpr -> andExpr .)
+    ID              reduce using rule 36 (simpleExpr -> andExpr .)
+    IF              reduce using rule 36 (simpleExpr -> andExpr .)
+    WHILE           reduce using rule 36 (simpleExpr -> andExpr .)
+    RETURN          reduce using rule 36 (simpleExpr -> andExpr .)
+    READLINE        reduce using rule 36 (simpleExpr -> andExpr .)
+    PRINT           reduce using rule 36 (simpleExpr -> andExpr .)
+    LINE_COMMENT    reduce using rule 36 (simpleExpr -> andExpr .)
+    BLOCK_COMMENT   reduce using rule 36 (simpleExpr -> andExpr .)
+    VAR             reduce using rule 36 (simpleExpr -> andExpr .)
+    LET             reduce using rule 36 (simpleExpr -> andExpr .)
+    FUNC            reduce using rule 36 (simpleExpr -> andExpr .)
+    NOT             reduce using rule 36 (simpleExpr -> andExpr .)
+    NUMBER          reduce using rule 36 (simpleExpr -> andExpr .)
+    $end            reduce using rule 36 (simpleExpr -> andExpr .)
+    RBRACK          reduce using rule 36 (simpleExpr -> andExpr .)
+    SEMCOL          reduce using rule 36 (simpleExpr -> andExpr .)
+    RPARENT         reduce using rule 36 (simpleExpr -> andExpr .)
+    AND             shift and go to state 67
+
+
+state 31
+
+    (10) stmt -> inputStmt . SEMCOL
+
+    SEMCOL          shift and go to state 68
+
+
+state 32
+
+    (60) outputStmt -> PRINT . LPARENT STRING RPARENT
+
+    LPARENT         shift and go to state 69
+
+
+state 33
+
+    (16) varDeclar -> VAR . ID ASSIGN STRING
+
+    ID              shift and go to state 70
+
+
+state 34
+
+    (32) iterationStmt -> WHILE . LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+
+    LPARENT         shift and go to state 71
+
+
+state 35
+
+    (33) returnStmt -> RETURN .
+    (34) returnStmt -> RETURN . simpleExpr
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    SEMCOL          reduce using rule 33 (returnStmt -> RETURN .)
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    opElement                      shift and go to state 11
+    call                           shift and go to state 53
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    simpleExpr                     shift and go to state 72
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    andExpr                        shift and go to state 30
+
+state 36
+
+    (46) relop -> GT .
+
+    NUMBER          reduce using rule 46 (relop -> GT .)
+    ID              reduce using rule 46 (relop -> GT .)
+
+
+state 37
+
+    (51) sumop -> SUM .
+
+    NUMBER          reduce using rule 51 (sumop -> SUM .)
+    ID              reduce using rule 51 (sumop -> SUM .)
+
+
+state 38
+
+    (45) relop -> GOET .
+
+    NUMBER          reduce using rule 45 (relop -> GOET .)
+    ID              reduce using rule 45 (relop -> GOET .)
+
+
+state 39
+
+    (44) relop -> LT .
+
+    NUMBER          reduce using rule 44 (relop -> LT .)
+    ID              reduce using rule 44 (relop -> LT .)
+
+
+state 40
+
+    (41) relExpr -> sumExpr relop . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    opElement                      shift and go to state 11
+    term                           shift and go to state 9
+    call                           shift and go to state 53
+    sumExpr                        shift and go to state 73
+
+state 41
+
+    (49) sumExpr -> sumExpr sumop . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    opElement                      shift and go to state 11
+    term                           shift and go to state 74
+    call                           shift and go to state 53
+
+state 42
+
+    (43) relop -> LOET .
+
+    NUMBER          reduce using rule 43 (relop -> LOET .)
+    ID              reduce using rule 43 (relop -> LOET .)
+
+
+state 43
+
+    (52) sumop -> SUBST .
+
+    NUMBER          reduce using rule 52 (sumop -> SUBST .)
+    ID              reduce using rule 52 (sumop -> SUBST .)
+
+
+state 44
+
+    (47) relop -> EQ .
+
+    NUMBER          reduce using rule 47 (relop -> EQ .)
+    ID              reduce using rule 47 (relop -> EQ .)
+
+
+state 45
+
+    (48) relop -> NEQ .
+
+    NUMBER          reduce using rule 48 (relop -> NEQ .)
+    ID              reduce using rule 48 (relop -> NEQ .)
+
+
+state 46
+
+    (11) stmt -> outputStmt SEMCOL .
+
+    ID              reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    IF              reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    WHILE           reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    RETURN          reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    READLINE        reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    PRINT           reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    LINE_COMMENT    reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    BLOCK_COMMENT   reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    VAR             reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    LET             reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    FUNC            reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    NOT             reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    NUMBER          reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    RBRACK          reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+    $end            reduce using rule 11 (stmt -> outputStmt SEMCOL .)
+
+
+state 47
+
+    (35) simpleExpr -> simpleExpr OR . andExpr
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    opElement                      shift and go to state 11
+    call                           shift and go to state 53
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    andExpr                        shift and go to state 75
+
+state 48
+
+    (9) stmt -> returnStmt SEMCOL .
+
+    ID              reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    IF              reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    WHILE           reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    RETURN          reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    READLINE        reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    PRINT           reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    LINE_COMMENT    reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    BLOCK_COMMENT   reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    VAR             reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    LET             reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    FUNC            reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    NOT             reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    NUMBER          reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    RBRACK          reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+    $end            reduce using rule 9 (stmt -> returnStmt SEMCOL .)
+
+
+state 49
+
+    (53) term -> term mulop . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    opElement                      shift and go to state 76
+    call                           shift and go to state 53
+
+state 50
+
+    (57) mulop -> PROD .
+
+    NUMBER          reduce using rule 57 (mulop -> PROD .)
+    ID              reduce using rule 57 (mulop -> PROD .)
+
+
+state 51
+
+    (58) mulop -> DIV .
+
+    NUMBER          reduce using rule 58 (mulop -> DIV .)
+    ID              reduce using rule 58 (mulop -> DIV .)
+
+
+state 52
+
+    (14) declar -> varDeclar SEMCOL .
+
+    SEMCOL          reduce using rule 14 (declar -> varDeclar SEMCOL .)
+
+
+state 53
+
+    (55) opElement -> call .
+    (28) call -> call . POINT call
+
+    PROD            reduce using rule 55 (opElement -> call .)
+    DIV             reduce using rule 55 (opElement -> call .)
+    LOET            reduce using rule 55 (opElement -> call .)
+    LT              reduce using rule 55 (opElement -> call .)
+    GOET            reduce using rule 55 (opElement -> call .)
+    GT              reduce using rule 55 (opElement -> call .)
+    EQ              reduce using rule 55 (opElement -> call .)
+    NEQ             reduce using rule 55 (opElement -> call .)
+    SUM             reduce using rule 55 (opElement -> call .)
+    SUBST           reduce using rule 55 (opElement -> call .)
+    AND             reduce using rule 55 (opElement -> call .)
+    OR              reduce using rule 55 (opElement -> call .)
+    SEMCOL          reduce using rule 55 (opElement -> call .)
+    ID              reduce using rule 55 (opElement -> call .)
+    IF              reduce using rule 55 (opElement -> call .)
+    WHILE           reduce using rule 55 (opElement -> call .)
+    RETURN          reduce using rule 55 (opElement -> call .)
+    READLINE        reduce using rule 55 (opElement -> call .)
+    PRINT           reduce using rule 55 (opElement -> call .)
+    LINE_COMMENT    reduce using rule 55 (opElement -> call .)
+    BLOCK_COMMENT   reduce using rule 55 (opElement -> call .)
+    VAR             reduce using rule 55 (opElement -> call .)
+    LET             reduce using rule 55 (opElement -> call .)
+    FUNC            reduce using rule 55 (opElement -> call .)
+    NOT             reduce using rule 55 (opElement -> call .)
+    NUMBER          reduce using rule 55 (opElement -> call .)
+    $end            reduce using rule 55 (opElement -> call .)
+    RBRACK          reduce using rule 55 (opElement -> call .)
+    RPARENT         reduce using rule 55 (opElement -> call .)
+    POINT           shift and go to state 66
+
+
+state 54
+
+    (24) call -> ID .
+    (25) call -> ID . POINT call
+    (26) call -> ID . LPARENT RPARENT
+    (27) call -> ID . LPARENT params RPARENT
+
+  ! shift/reduce conflict for POINT resolved as shift
+    SEMCOL          reduce using rule 24 (call -> ID .)
+    PROD            reduce using rule 24 (call -> ID .)
+    DIV             reduce using rule 24 (call -> ID .)
+    LOET            reduce using rule 24 (call -> ID .)
+    LT              reduce using rule 24 (call -> ID .)
+    GOET            reduce using rule 24 (call -> ID .)
+    GT              reduce using rule 24 (call -> ID .)
+    EQ              reduce using rule 24 (call -> ID .)
+    NEQ             reduce using rule 24 (call -> ID .)
+    SUM             reduce using rule 24 (call -> ID .)
+    SUBST           reduce using rule 24 (call -> ID .)
+    AND             reduce using rule 24 (call -> ID .)
+    OR              reduce using rule 24 (call -> ID .)
+    ID              reduce using rule 24 (call -> ID .)
+    IF              reduce using rule 24 (call -> ID .)
+    WHILE           reduce using rule 24 (call -> ID .)
+    RETURN          reduce using rule 24 (call -> ID .)
+    READLINE        reduce using rule 24 (call -> ID .)
+    PRINT           reduce using rule 24 (call -> ID .)
+    LINE_COMMENT    reduce using rule 24 (call -> ID .)
+    BLOCK_COMMENT   reduce using rule 24 (call -> ID .)
+    VAR             reduce using rule 24 (call -> ID .)
+    LET             reduce using rule 24 (call -> ID .)
+    FUNC            reduce using rule 24 (call -> ID .)
+    NOT             reduce using rule 24 (call -> ID .)
+    NUMBER          reduce using rule 24 (call -> ID .)
+    $end            reduce using rule 24 (call -> ID .)
+    RBRACK          reduce using rule 24 (call -> ID .)
+    RPARENT         reduce using rule 24 (call -> ID .)
+    POINT           shift and go to state 61
+    LPARENT         shift and go to state 62
+
+  ! POINT           [ reduce using rule 24 (call -> ID .) ]
+
+
+state 55
+
+    (39) unaryRelExpr -> NOT unaryRelExpr .
+
+    AND             reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    RPARENT         reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    OR              reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    SEMCOL          reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    ID              reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    IF              reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    WHILE           reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    RETURN          reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    READLINE        reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    PRINT           reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    LINE_COMMENT    reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    BLOCK_COMMENT   reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    VAR             reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    LET             reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    FUNC            reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    NOT             reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    NUMBER          reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    $end            reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+    RBRACK          reduce using rule 39 (unaryRelExpr -> NOT unaryRelExpr .)
+
+
+state 56
+
+    (59) inputStmt -> READLINE LPARENT . RPARENT
+
+    RPARENT         shift and go to state 77
+
+
+state 57
+
+    (3) suite -> stmt suite .
+
+    RBRACK          reduce using rule 3 (suite -> stmt suite .)
+    $end            reduce using rule 3 (suite -> stmt suite .)
+
+
+state 58
+
+    (17) varDeclar -> LET ID . ASSIGN STRING
+
+    ASSIGN          shift and go to state 78
+
+
+state 59
+
+    (5) stmt -> declar SEMCOL .
+
+    ID              reduce using rule 5 (stmt -> declar SEMCOL .)
+    IF              reduce using rule 5 (stmt -> declar SEMCOL .)
+    WHILE           reduce using rule 5 (stmt -> declar SEMCOL .)
+    RETURN          reduce using rule 5 (stmt -> declar SEMCOL .)
+    READLINE        reduce using rule 5 (stmt -> declar SEMCOL .)
+    PRINT           reduce using rule 5 (stmt -> declar SEMCOL .)
+    LINE_COMMENT    reduce using rule 5 (stmt -> declar SEMCOL .)
+    BLOCK_COMMENT   reduce using rule 5 (stmt -> declar SEMCOL .)
+    VAR             reduce using rule 5 (stmt -> declar SEMCOL .)
+    LET             reduce using rule 5 (stmt -> declar SEMCOL .)
+    FUNC            reduce using rule 5 (stmt -> declar SEMCOL .)
+    NOT             reduce using rule 5 (stmt -> declar SEMCOL .)
+    NUMBER          reduce using rule 5 (stmt -> declar SEMCOL .)
+    RBRACK          reduce using rule 5 (stmt -> declar SEMCOL .)
+    $end            reduce using rule 5 (stmt -> declar SEMCOL .)
+
+
+state 60
+
+    (30) selectionStmt -> IF LPARENT . simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> IF LPARENT . simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    opElement                      shift and go to state 11
+    call                           shift and go to state 53
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    simpleExpr                     shift and go to state 79
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    andExpr                        shift and go to state 30
+
+state 61
+
+    (25) call -> ID POINT . call
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    ID              shift and go to state 54
+
+    call                           shift and go to state 80
+
+state 62
+
+    (26) call -> ID LPARENT . RPARENT
+    (27) call -> ID LPARENT . params RPARENT
+    (21) params -> . paramsList
+    (22) paramsList -> . ID COMA paramsList
+    (23) paramsList -> . ID
+
+    RPARENT         shift and go to state 84
+    ID              shift and go to state 82
+
+    paramsList                     shift and go to state 83
+    params                         shift and go to state 81
+
+state 63
+
+    (18) varDeclar -> ID ASSIGN . exprStmt
+    (29) exprStmt -> . simpleExpr
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    exprStmt                       shift and go to state 85
+    opElement                      shift and go to state 11
+    call                           shift and go to state 53
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    simpleExpr                     shift and go to state 6
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    andExpr                        shift and go to state 30
+
+state 64
+
+    (19) funcDeclar -> FUNC ID . LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> FUNC ID . LPARENT params RPARENT LBRACK suite RBRACK
+
+    LPARENT         shift and go to state 86
+
+
+state 65
+
+    (6) stmt -> call SEMCOL .
+
+    ID              reduce using rule 6 (stmt -> call SEMCOL .)
+    IF              reduce using rule 6 (stmt -> call SEMCOL .)
+    WHILE           reduce using rule 6 (stmt -> call SEMCOL .)
+    RETURN          reduce using rule 6 (stmt -> call SEMCOL .)
+    READLINE        reduce using rule 6 (stmt -> call SEMCOL .)
+    PRINT           reduce using rule 6 (stmt -> call SEMCOL .)
+    LINE_COMMENT    reduce using rule 6 (stmt -> call SEMCOL .)
+    BLOCK_COMMENT   reduce using rule 6 (stmt -> call SEMCOL .)
+    VAR             reduce using rule 6 (stmt -> call SEMCOL .)
+    LET             reduce using rule 6 (stmt -> call SEMCOL .)
+    FUNC            reduce using rule 6 (stmt -> call SEMCOL .)
+    NOT             reduce using rule 6 (stmt -> call SEMCOL .)
+    NUMBER          reduce using rule 6 (stmt -> call SEMCOL .)
+    RBRACK          reduce using rule 6 (stmt -> call SEMCOL .)
+    $end            reduce using rule 6 (stmt -> call SEMCOL .)
+
+
+state 66
+
+    (28) call -> call POINT . call
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    ID              shift and go to state 54
+
+    call                           shift and go to state 87
+
+state 67
+
+    (37) andExpr -> andExpr AND . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    relExpr                        shift and go to state 15
+    opElement                      shift and go to state 11
+    call                           shift and go to state 53
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 88
+    sumExpr                        shift and go to state 3
+
+state 68
+
+    (10) stmt -> inputStmt SEMCOL .
+
+    ID              reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    IF              reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    WHILE           reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    RETURN          reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    READLINE        reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    PRINT           reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    LINE_COMMENT    reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    BLOCK_COMMENT   reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    VAR             reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    LET             reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    FUNC            reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    NOT             reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    NUMBER          reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    RBRACK          reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+    $end            reduce using rule 10 (stmt -> inputStmt SEMCOL .)
+
+
+state 69
+
+    (60) outputStmt -> PRINT LPARENT . STRING RPARENT
+
+    STRING          shift and go to state 89
+
+
+state 70
+
+    (16) varDeclar -> VAR ID . ASSIGN STRING
+
+    ASSIGN          shift and go to state 90
+
+
+state 71
+
+    (32) iterationStmt -> WHILE LPARENT . simpleExpr RPARENT LBRACK suite RBRACK
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 54
+
+    opElement                      shift and go to state 11
+    call                           shift and go to state 53
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    simpleExpr                     shift and go to state 91
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    andExpr                        shift and go to state 30
+
+state 72
+
+    (34) returnStmt -> RETURN simpleExpr .
+    (35) simpleExpr -> simpleExpr . OR andExpr
+
+    SEMCOL          reduce using rule 34 (returnStmt -> RETURN simpleExpr .)
+    OR              shift and go to state 47
+
+
+state 73
+
+    (41) relExpr -> sumExpr relop sumExpr .
+    (49) sumExpr -> sumExpr . sumop term
+    (51) sumop -> . SUM
+    (52) sumop -> . SUBST
+
+    AND             reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    OR              reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    SEMCOL          reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    RPARENT         reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    ID              reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    IF              reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    WHILE           reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    RETURN          reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    READLINE        reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    PRINT           reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    LINE_COMMENT    reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    BLOCK_COMMENT   reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    VAR             reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    LET             reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    FUNC            reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    NOT             reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    NUMBER          reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    $end            reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    RBRACK          reduce using rule 41 (relExpr -> sumExpr relop sumExpr .)
+    SUM             shift and go to state 37
+    SUBST           shift and go to state 43
+
+    sumop                          shift and go to state 41
+
+state 74
+
+    (49) sumExpr -> sumExpr sumop term .
+    (53) term -> term . mulop opElement
+    (57) mulop -> . PROD
+    (58) mulop -> . DIV
+
+    LOET            reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    LT              reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    GOET            reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    GT              reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    EQ              reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    NEQ             reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    SUM             reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    SUBST           reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    AND             reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    RPARENT         reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    OR              reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    ID              reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    IF              reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    WHILE           reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    RETURN          reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    READLINE        reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    PRINT           reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    LINE_COMMENT    reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    BLOCK_COMMENT   reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    VAR             reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    LET             reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    FUNC            reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    NOT             reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    NUMBER          reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    RBRACK          reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    $end            reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    SEMCOL          reduce using rule 49 (sumExpr -> sumExpr sumop term .)
+    PROD            shift and go to state 50
+    DIV             shift and go to state 51
+
+    mulop                          shift and go to state 49
+
+state 75
+
+    (35) simpleExpr -> simpleExpr OR andExpr .
+    (37) andExpr -> andExpr . AND unaryRelExpr
+
+    OR              reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    ID              reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    IF              reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    WHILE           reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    RETURN          reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    READLINE        reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    PRINT           reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    LINE_COMMENT    reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    BLOCK_COMMENT   reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    VAR             reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    LET             reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    FUNC            reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    NOT             reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    NUMBER          reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    $end            reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    RBRACK          reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    SEMCOL          reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    RPARENT         reduce using rule 35 (simpleExpr -> simpleExpr OR andExpr .)
+    AND             shift and go to state 67
+
+
+state 76
+
+    (53) term -> term mulop opElement .
+
+    PROD            reduce using rule 53 (term -> term mulop opElement .)
+    DIV             reduce using rule 53 (term -> term mulop opElement .)
+    LOET            reduce using rule 53 (term -> term mulop opElement .)
+    LT              reduce using rule 53 (term -> term mulop opElement .)
+    GOET            reduce using rule 53 (term -> term mulop opElement .)
+    GT              reduce using rule 53 (term -> term mulop opElement .)
+    EQ              reduce using rule 53 (term -> term mulop opElement .)
+    NEQ             reduce using rule 53 (term -> term mulop opElement .)
+    SUM             reduce using rule 53 (term -> term mulop opElement .)
+    SUBST           reduce using rule 53 (term -> term mulop opElement .)
+    AND             reduce using rule 53 (term -> term mulop opElement .)
+    OR              reduce using rule 53 (term -> term mulop opElement .)
+    ID              reduce using rule 53 (term -> term mulop opElement .)
+    IF              reduce using rule 53 (term -> term mulop opElement .)
+    WHILE           reduce using rule 53 (term -> term mulop opElement .)
+    RETURN          reduce using rule 53 (term -> term mulop opElement .)
+    READLINE        reduce using rule 53 (term -> term mulop opElement .)
+    PRINT           reduce using rule 53 (term -> term mulop opElement .)
+    LINE_COMMENT    reduce using rule 53 (term -> term mulop opElement .)
+    BLOCK_COMMENT   reduce using rule 53 (term -> term mulop opElement .)
+    VAR             reduce using rule 53 (term -> term mulop opElement .)
+    LET             reduce using rule 53 (term -> term mulop opElement .)
+    FUNC            reduce using rule 53 (term -> term mulop opElement .)
+    NOT             reduce using rule 53 (term -> term mulop opElement .)
+    NUMBER          reduce using rule 53 (term -> term mulop opElement .)
+    $end            reduce using rule 53 (term -> term mulop opElement .)
+    RBRACK          reduce using rule 53 (term -> term mulop opElement .)
+    SEMCOL          reduce using rule 53 (term -> term mulop opElement .)
+    RPARENT         reduce using rule 53 (term -> term mulop opElement .)
+
+
+state 77
+
+    (59) inputStmt -> READLINE LPARENT RPARENT .
+
+    SEMCOL          reduce using rule 59 (inputStmt -> READLINE LPARENT RPARENT .)
+
+
+state 78
+
+    (17) varDeclar -> LET ID ASSIGN . STRING
+
+    STRING          shift and go to state 92
+
+
+state 79
+
+    (30) selectionStmt -> IF LPARENT simpleExpr . RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> IF LPARENT simpleExpr . RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (35) simpleExpr -> simpleExpr . OR andExpr
+
+    RPARENT         shift and go to state 93
+    OR              shift and go to state 47
+
+
+state 80
+
+    (25) call -> ID POINT call .
+    (28) call -> call . POINT call
+
+  ! shift/reduce conflict for POINT resolved as shift
+    SEMCOL          reduce using rule 25 (call -> ID POINT call .)
+    PROD            reduce using rule 25 (call -> ID POINT call .)
+    DIV             reduce using rule 25 (call -> ID POINT call .)
+    LOET            reduce using rule 25 (call -> ID POINT call .)
+    LT              reduce using rule 25 (call -> ID POINT call .)
+    GOET            reduce using rule 25 (call -> ID POINT call .)
+    GT              reduce using rule 25 (call -> ID POINT call .)
+    EQ              reduce using rule 25 (call -> ID POINT call .)
+    NEQ             reduce using rule 25 (call -> ID POINT call .)
+    SUM             reduce using rule 25 (call -> ID POINT call .)
+    SUBST           reduce using rule 25 (call -> ID POINT call .)
+    AND             reduce using rule 25 (call -> ID POINT call .)
+    OR              reduce using rule 25 (call -> ID POINT call .)
+    ID              reduce using rule 25 (call -> ID POINT call .)
+    IF              reduce using rule 25 (call -> ID POINT call .)
+    WHILE           reduce using rule 25 (call -> ID POINT call .)
+    RETURN          reduce using rule 25 (call -> ID POINT call .)
+    READLINE        reduce using rule 25 (call -> ID POINT call .)
+    PRINT           reduce using rule 25 (call -> ID POINT call .)
+    LINE_COMMENT    reduce using rule 25 (call -> ID POINT call .)
+    BLOCK_COMMENT   reduce using rule 25 (call -> ID POINT call .)
+    VAR             reduce using rule 25 (call -> ID POINT call .)
+    LET             reduce using rule 25 (call -> ID POINT call .)
+    FUNC            reduce using rule 25 (call -> ID POINT call .)
+    NOT             reduce using rule 25 (call -> ID POINT call .)
+    NUMBER          reduce using rule 25 (call -> ID POINT call .)
+    $end            reduce using rule 25 (call -> ID POINT call .)
+    RBRACK          reduce using rule 25 (call -> ID POINT call .)
+    RPARENT         reduce using rule 25 (call -> ID POINT call .)
+    POINT           shift and go to state 66
+
+  ! POINT           [ reduce using rule 25 (call -> ID POINT call .) ]
+
+
+state 81
+
+    (27) call -> ID LPARENT params . RPARENT
+
+    RPARENT         shift and go to state 94
+
+
+state 82
+
+    (22) paramsList -> ID . COMA paramsList
+    (23) paramsList -> ID .
+
+    COMA            shift and go to state 95
+    RPARENT         reduce using rule 23 (paramsList -> ID .)
+
+
+state 83
+
+    (21) params -> paramsList .
+
+    RPARENT         reduce using rule 21 (params -> paramsList .)
+
+
+state 84
+
+    (26) call -> ID LPARENT RPARENT .
+
+    POINT           reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    SEMCOL          reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    PROD            reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    DIV             reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    LOET            reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    LT              reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    GOET            reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    GT              reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    EQ              reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    NEQ             reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    SUM             reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    SUBST           reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    AND             reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    OR              reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    ID              reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    IF              reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    WHILE           reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    RETURN          reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    READLINE        reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    PRINT           reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    LINE_COMMENT    reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    BLOCK_COMMENT   reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    VAR             reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    LET             reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    FUNC            reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    NOT             reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    NUMBER          reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    $end            reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    RBRACK          reduce using rule 26 (call -> ID LPARENT RPARENT .)
+    RPARENT         reduce using rule 26 (call -> ID LPARENT RPARENT .)
+
+
+state 85
+
+    (18) varDeclar -> ID ASSIGN exprStmt .
+
+    SEMCOL          reduce using rule 18 (varDeclar -> ID ASSIGN exprStmt .)
+
+
+state 86
+
+    (19) funcDeclar -> FUNC ID LPARENT . RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> FUNC ID LPARENT . params RPARENT LBRACK suite RBRACK
+    (21) params -> . paramsList
+    (22) paramsList -> . ID COMA paramsList
+    (23) paramsList -> . ID
+
+    RPARENT         shift and go to state 97
+    ID              shift and go to state 82
+
+    paramsList                     shift and go to state 83
+    params                         shift and go to state 96
+
+state 87
+
+    (28) call -> call POINT call .
+    (28) call -> call . POINT call
+
+  ! shift/reduce conflict for POINT resolved as shift
+    SEMCOL          reduce using rule 28 (call -> call POINT call .)
+    PROD            reduce using rule 28 (call -> call POINT call .)
+    DIV             reduce using rule 28 (call -> call POINT call .)
+    LOET            reduce using rule 28 (call -> call POINT call .)
+    LT              reduce using rule 28 (call -> call POINT call .)
+    GOET            reduce using rule 28 (call -> call POINT call .)
+    GT              reduce using rule 28 (call -> call POINT call .)
+    EQ              reduce using rule 28 (call -> call POINT call .)
+    NEQ             reduce using rule 28 (call -> call POINT call .)
+    SUM             reduce using rule 28 (call -> call POINT call .)
+    SUBST           reduce using rule 28 (call -> call POINT call .)
+    AND             reduce using rule 28 (call -> call POINT call .)
+    OR              reduce using rule 28 (call -> call POINT call .)
+    ID              reduce using rule 28 (call -> call POINT call .)
+    IF              reduce using rule 28 (call -> call POINT call .)
+    WHILE           reduce using rule 28 (call -> call POINT call .)
+    RETURN          reduce using rule 28 (call -> call POINT call .)
+    READLINE        reduce using rule 28 (call -> call POINT call .)
+    PRINT           reduce using rule 28 (call -> call POINT call .)
+    LINE_COMMENT    reduce using rule 28 (call -> call POINT call .)
+    BLOCK_COMMENT   reduce using rule 28 (call -> call POINT call .)
+    VAR             reduce using rule 28 (call -> call POINT call .)
+    LET             reduce using rule 28 (call -> call POINT call .)
+    FUNC            reduce using rule 28 (call -> call POINT call .)
+    NOT             reduce using rule 28 (call -> call POINT call .)
+    NUMBER          reduce using rule 28 (call -> call POINT call .)
+    $end            reduce using rule 28 (call -> call POINT call .)
+    RBRACK          reduce using rule 28 (call -> call POINT call .)
+    RPARENT         reduce using rule 28 (call -> call POINT call .)
+    POINT           shift and go to state 66
+
+  ! POINT           [ reduce using rule 28 (call -> call POINT call .) ]
+
+
+state 88
+
+    (37) andExpr -> andExpr AND unaryRelExpr .
+
+    AND             reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    RPARENT         reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    OR              reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    ID              reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    IF              reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    WHILE           reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    RETURN          reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    READLINE        reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    PRINT           reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    LINE_COMMENT    reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    BLOCK_COMMENT   reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    VAR             reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    LET             reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    FUNC            reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    NOT             reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    NUMBER          reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    RBRACK          reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    $end            reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+    SEMCOL          reduce using rule 37 (andExpr -> andExpr AND unaryRelExpr .)
+
+
+state 89
+
+    (60) outputStmt -> PRINT LPARENT STRING . RPARENT
+
+    RPARENT         shift and go to state 98
+
+
+state 90
+
+    (16) varDeclar -> VAR ID ASSIGN . STRING
+
+    STRING          shift and go to state 99
+
+
+state 91
+
+    (32) iterationStmt -> WHILE LPARENT simpleExpr . RPARENT LBRACK suite RBRACK
+    (35) simpleExpr -> simpleExpr . OR andExpr
+
+    RPARENT         shift and go to state 100
+    OR              shift and go to state 47
+
+
+state 92
+
+    (17) varDeclar -> LET ID ASSIGN STRING .
+
+    SEMCOL          reduce using rule 17 (varDeclar -> LET ID ASSIGN STRING .)
+
+
+state 93
+
+    (30) selectionStmt -> IF LPARENT simpleExpr RPARENT . LBRACK suite RBRACK
+    (31) selectionStmt -> IF LPARENT simpleExpr RPARENT . LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+
+    LBRACK          shift and go to state 101
+
+
+state 94
+
+    (27) call -> ID LPARENT params RPARENT .
+
+    POINT           reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    SEMCOL          reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    PROD            reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    DIV             reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    LOET            reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    LT              reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    GOET            reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    GT              reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    EQ              reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    NEQ             reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    SUM             reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    SUBST           reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    AND             reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    OR              reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    ID              reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    IF              reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    WHILE           reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    RETURN          reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    READLINE        reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    PRINT           reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    LINE_COMMENT    reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    BLOCK_COMMENT   reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    VAR             reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    LET             reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    FUNC            reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    NOT             reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    NUMBER          reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    $end            reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    RBRACK          reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+    RPARENT         reduce using rule 27 (call -> ID LPARENT params RPARENT .)
+
+
+state 95
+
+    (22) paramsList -> ID COMA . paramsList
+    (22) paramsList -> . ID COMA paramsList
+    (23) paramsList -> . ID
+
+    ID              shift and go to state 82
+
+    paramsList                     shift and go to state 102
+
+state 96
+
+    (20) funcDeclar -> FUNC ID LPARENT params . RPARENT LBRACK suite RBRACK
+
+    RPARENT         shift and go to state 103
+
+
+state 97
+
+    (19) funcDeclar -> FUNC ID LPARENT RPARENT . LBRACK suite RBRACK
+
+    LBRACK          shift and go to state 104
+
+
+state 98
+
+    (60) outputStmt -> PRINT LPARENT STRING RPARENT .
+
+    SEMCOL          reduce using rule 60 (outputStmt -> PRINT LPARENT STRING RPARENT .)
+
+
+state 99
+
+    (16) varDeclar -> VAR ID ASSIGN STRING .
+
+    SEMCOL          reduce using rule 16 (varDeclar -> VAR ID ASSIGN STRING .)
+
+
+state 100
+
+    (32) iterationStmt -> WHILE LPARENT simpleExpr RPARENT . LBRACK suite RBRACK
+
+    LBRACK          shift and go to state 105
+
+
+state 101
+
+    (30) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK . suite RBRACK
+    (31) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK . suite RBRACK ELSE LBRACK suite RBRACK
+    (2) suite -> . stmt
+    (3) suite -> . stmt suite
+    (4) stmt -> . exprStmt
+    (5) stmt -> . declar SEMCOL
+    (6) stmt -> . call SEMCOL
+    (7) stmt -> . selectionStmt
+    (8) stmt -> . iterationStmt
+    (9) stmt -> . returnStmt SEMCOL
+    (10) stmt -> . inputStmt SEMCOL
+    (11) stmt -> . outputStmt SEMCOL
+    (12) stmt -> . lineComment
+    (13) stmt -> . blockComment
+    (29) exprStmt -> . simpleExpr
+    (14) declar -> . varDeclar SEMCOL
+    (15) declar -> . funcDeclar
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+    (30) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (32) iterationStmt -> . WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (33) returnStmt -> . RETURN
+    (34) returnStmt -> . RETURN simpleExpr
+    (59) inputStmt -> . READLINE LPARENT RPARENT
+    (60) outputStmt -> . PRINT LPARENT STRING RPARENT
+    (61) lineComment -> . LINE_COMMENT
+    (62) blockComment -> . BLOCK_COMMENT
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (16) varDeclar -> . VAR ID ASSIGN STRING
+    (17) varDeclar -> . LET ID ASSIGN STRING
+    (18) varDeclar -> . ID ASSIGN exprStmt
+    (19) funcDeclar -> . FUNC ID LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> . FUNC ID LPARENT params RPARENT LBRACK suite RBRACK
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+
+    ID              shift and go to state 24
+    IF              shift and go to state 23
+    WHILE           shift and go to state 34
+    RETURN          shift and go to state 35
+    READLINE        shift and go to state 14
+    PRINT           shift and go to state 32
+    LINE_COMMENT    shift and go to state 26
+    BLOCK_COMMENT   shift and go to state 18
+    VAR             shift and go to state 33
+    LET             shift and go to state 19
+    FUNC            shift and go to state 27
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+
+    exprStmt                       shift and go to state 1
+    funcDeclar                     shift and go to state 16
+    opElement                      shift and go to state 11
+    suite                          shift and go to state 106
+    outputStmt                     shift and go to state 4
+    blockComment                   shift and go to state 5
+    returnStmt                     shift and go to state 7
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    varDeclar                      shift and go to state 12
+    call                           shift and go to state 28
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    inputStmt                      shift and go to state 31
+    selectionStmt                  shift and go to state 29
+    stmt                           shift and go to state 17
+    iterationStmt                  shift and go to state 25
+    simpleExpr                     shift and go to state 6
+    declar                         shift and go to state 20
+    lineComment                    shift and go to state 21
+    andExpr                        shift and go to state 30
+
+state 102
+
+    (22) paramsList -> ID COMA paramsList .
+
+    RPARENT         reduce using rule 22 (paramsList -> ID COMA paramsList .)
+
+
+state 103
+
+    (20) funcDeclar -> FUNC ID LPARENT params RPARENT . LBRACK suite RBRACK
+
+    LBRACK          shift and go to state 107
+
+
+state 104
+
+    (19) funcDeclar -> FUNC ID LPARENT RPARENT LBRACK . suite RBRACK
+    (2) suite -> . stmt
+    (3) suite -> . stmt suite
+    (4) stmt -> . exprStmt
+    (5) stmt -> . declar SEMCOL
+    (6) stmt -> . call SEMCOL
+    (7) stmt -> . selectionStmt
+    (8) stmt -> . iterationStmt
+    (9) stmt -> . returnStmt SEMCOL
+    (10) stmt -> . inputStmt SEMCOL
+    (11) stmt -> . outputStmt SEMCOL
+    (12) stmt -> . lineComment
+    (13) stmt -> . blockComment
+    (29) exprStmt -> . simpleExpr
+    (14) declar -> . varDeclar SEMCOL
+    (15) declar -> . funcDeclar
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+    (30) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (32) iterationStmt -> . WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (33) returnStmt -> . RETURN
+    (34) returnStmt -> . RETURN simpleExpr
+    (59) inputStmt -> . READLINE LPARENT RPARENT
+    (60) outputStmt -> . PRINT LPARENT STRING RPARENT
+    (61) lineComment -> . LINE_COMMENT
+    (62) blockComment -> . BLOCK_COMMENT
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (16) varDeclar -> . VAR ID ASSIGN STRING
+    (17) varDeclar -> . LET ID ASSIGN STRING
+    (18) varDeclar -> . ID ASSIGN exprStmt
+    (19) funcDeclar -> . FUNC ID LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> . FUNC ID LPARENT params RPARENT LBRACK suite RBRACK
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+
+    ID              shift and go to state 24
+    IF              shift and go to state 23
+    WHILE           shift and go to state 34
+    RETURN          shift and go to state 35
+    READLINE        shift and go to state 14
+    PRINT           shift and go to state 32
+    LINE_COMMENT    shift and go to state 26
+    BLOCK_COMMENT   shift and go to state 18
+    VAR             shift and go to state 33
+    LET             shift and go to state 19
+    FUNC            shift and go to state 27
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+
+    exprStmt                       shift and go to state 1
+    funcDeclar                     shift and go to state 16
+    opElement                      shift and go to state 11
+    suite                          shift and go to state 108
+    outputStmt                     shift and go to state 4
+    blockComment                   shift and go to state 5
+    returnStmt                     shift and go to state 7
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    varDeclar                      shift and go to state 12
+    call                           shift and go to state 28
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    inputStmt                      shift and go to state 31
+    selectionStmt                  shift and go to state 29
+    stmt                           shift and go to state 17
+    iterationStmt                  shift and go to state 25
+    simpleExpr                     shift and go to state 6
+    declar                         shift and go to state 20
+    lineComment                    shift and go to state 21
+    andExpr                        shift and go to state 30
+
+state 105
+
+    (32) iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK . suite RBRACK
+    (2) suite -> . stmt
+    (3) suite -> . stmt suite
+    (4) stmt -> . exprStmt
+    (5) stmt -> . declar SEMCOL
+    (6) stmt -> . call SEMCOL
+    (7) stmt -> . selectionStmt
+    (8) stmt -> . iterationStmt
+    (9) stmt -> . returnStmt SEMCOL
+    (10) stmt -> . inputStmt SEMCOL
+    (11) stmt -> . outputStmt SEMCOL
+    (12) stmt -> . lineComment
+    (13) stmt -> . blockComment
+    (29) exprStmt -> . simpleExpr
+    (14) declar -> . varDeclar SEMCOL
+    (15) declar -> . funcDeclar
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+    (30) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (32) iterationStmt -> . WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (33) returnStmt -> . RETURN
+    (34) returnStmt -> . RETURN simpleExpr
+    (59) inputStmt -> . READLINE LPARENT RPARENT
+    (60) outputStmt -> . PRINT LPARENT STRING RPARENT
+    (61) lineComment -> . LINE_COMMENT
+    (62) blockComment -> . BLOCK_COMMENT
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (16) varDeclar -> . VAR ID ASSIGN STRING
+    (17) varDeclar -> . LET ID ASSIGN STRING
+    (18) varDeclar -> . ID ASSIGN exprStmt
+    (19) funcDeclar -> . FUNC ID LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> . FUNC ID LPARENT params RPARENT LBRACK suite RBRACK
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+
+    ID              shift and go to state 24
+    IF              shift and go to state 23
+    WHILE           shift and go to state 34
+    RETURN          shift and go to state 35
+    READLINE        shift and go to state 14
+    PRINT           shift and go to state 32
+    LINE_COMMENT    shift and go to state 26
+    BLOCK_COMMENT   shift and go to state 18
+    VAR             shift and go to state 33
+    LET             shift and go to state 19
+    FUNC            shift and go to state 27
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+
+    exprStmt                       shift and go to state 1
+    funcDeclar                     shift and go to state 16
+    opElement                      shift and go to state 11
+    suite                          shift and go to state 109
+    outputStmt                     shift and go to state 4
+    blockComment                   shift and go to state 5
+    returnStmt                     shift and go to state 7
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    varDeclar                      shift and go to state 12
+    call                           shift and go to state 28
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    inputStmt                      shift and go to state 31
+    selectionStmt                  shift and go to state 29
+    stmt                           shift and go to state 17
+    iterationStmt                  shift and go to state 25
+    simpleExpr                     shift and go to state 6
+    declar                         shift and go to state 20
+    lineComment                    shift and go to state 21
+    andExpr                        shift and go to state 30
+
+state 106
+
+    (30) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite . RBRACK
+    (31) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite . RBRACK ELSE LBRACK suite RBRACK
+
+    RBRACK          shift and go to state 110
+
+
+state 107
+
+    (20) funcDeclar -> FUNC ID LPARENT params RPARENT LBRACK . suite RBRACK
+    (2) suite -> . stmt
+    (3) suite -> . stmt suite
+    (4) stmt -> . exprStmt
+    (5) stmt -> . declar SEMCOL
+    (6) stmt -> . call SEMCOL
+    (7) stmt -> . selectionStmt
+    (8) stmt -> . iterationStmt
+    (9) stmt -> . returnStmt SEMCOL
+    (10) stmt -> . inputStmt SEMCOL
+    (11) stmt -> . outputStmt SEMCOL
+    (12) stmt -> . lineComment
+    (13) stmt -> . blockComment
+    (29) exprStmt -> . simpleExpr
+    (14) declar -> . varDeclar SEMCOL
+    (15) declar -> . funcDeclar
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+    (30) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (32) iterationStmt -> . WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (33) returnStmt -> . RETURN
+    (34) returnStmt -> . RETURN simpleExpr
+    (59) inputStmt -> . READLINE LPARENT RPARENT
+    (60) outputStmt -> . PRINT LPARENT STRING RPARENT
+    (61) lineComment -> . LINE_COMMENT
+    (62) blockComment -> . BLOCK_COMMENT
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (16) varDeclar -> . VAR ID ASSIGN STRING
+    (17) varDeclar -> . LET ID ASSIGN STRING
+    (18) varDeclar -> . ID ASSIGN exprStmt
+    (19) funcDeclar -> . FUNC ID LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> . FUNC ID LPARENT params RPARENT LBRACK suite RBRACK
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+
+    ID              shift and go to state 24
+    IF              shift and go to state 23
+    WHILE           shift and go to state 34
+    RETURN          shift and go to state 35
+    READLINE        shift and go to state 14
+    PRINT           shift and go to state 32
+    LINE_COMMENT    shift and go to state 26
+    BLOCK_COMMENT   shift and go to state 18
+    VAR             shift and go to state 33
+    LET             shift and go to state 19
+    FUNC            shift and go to state 27
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+
+    exprStmt                       shift and go to state 1
+    funcDeclar                     shift and go to state 16
+    opElement                      shift and go to state 11
+    suite                          shift and go to state 111
+    outputStmt                     shift and go to state 4
+    blockComment                   shift and go to state 5
+    returnStmt                     shift and go to state 7
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    varDeclar                      shift and go to state 12
+    call                           shift and go to state 28
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    inputStmt                      shift and go to state 31
+    selectionStmt                  shift and go to state 29
+    stmt                           shift and go to state 17
+    iterationStmt                  shift and go to state 25
+    simpleExpr                     shift and go to state 6
+    declar                         shift and go to state 20
+    lineComment                    shift and go to state 21
+    andExpr                        shift and go to state 30
+
+state 108
+
+    (19) funcDeclar -> FUNC ID LPARENT RPARENT LBRACK suite . RBRACK
+
+    RBRACK          shift and go to state 112
+
+
+state 109
+
+    (32) iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite . RBRACK
+
+    RBRACK          shift and go to state 113
+
+
+state 110
+
+    (30) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .
+    (31) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK . ELSE LBRACK suite RBRACK
+
+    ID              reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    IF              reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    WHILE           reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    RETURN          reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    READLINE        reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    PRINT           reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    LINE_COMMENT    reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    BLOCK_COMMENT   reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    VAR             reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    LET             reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    FUNC            reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    NOT             reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    NUMBER          reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    RBRACK          reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    $end            reduce using rule 30 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    ELSE            shift and go to state 114
+
+
+state 111
+
+    (20) funcDeclar -> FUNC ID LPARENT params RPARENT LBRACK suite . RBRACK
+
+    RBRACK          shift and go to state 115
+
+
+state 112
+
+    (19) funcDeclar -> FUNC ID LPARENT RPARENT LBRACK suite RBRACK .
+
+    SEMCOL          reduce using rule 19 (funcDeclar -> FUNC ID LPARENT RPARENT LBRACK suite RBRACK .)
+
+
+state 113
+
+    (32) iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .
+
+    ID              reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    IF              reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    WHILE           reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    RETURN          reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    READLINE        reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    PRINT           reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    LINE_COMMENT    reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    BLOCK_COMMENT   reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    VAR             reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    LET             reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    FUNC            reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    NOT             reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    NUMBER          reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    RBRACK          reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+    $end            reduce using rule 32 (iterationStmt -> WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK .)
+
+
+state 114
+
+    (31) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE . LBRACK suite RBRACK
+
+    LBRACK          shift and go to state 116
+
+
+state 115
+
+    (20) funcDeclar -> FUNC ID LPARENT params RPARENT LBRACK suite RBRACK .
+
+    SEMCOL          reduce using rule 20 (funcDeclar -> FUNC ID LPARENT params RPARENT LBRACK suite RBRACK .)
+
+
+state 116
+
+    (31) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK . suite RBRACK
+    (2) suite -> . stmt
+    (3) suite -> . stmt suite
+    (4) stmt -> . exprStmt
+    (5) stmt -> . declar SEMCOL
+    (6) stmt -> . call SEMCOL
+    (7) stmt -> . selectionStmt
+    (8) stmt -> . iterationStmt
+    (9) stmt -> . returnStmt SEMCOL
+    (10) stmt -> . inputStmt SEMCOL
+    (11) stmt -> . outputStmt SEMCOL
+    (12) stmt -> . lineComment
+    (13) stmt -> . blockComment
+    (29) exprStmt -> . simpleExpr
+    (14) declar -> . varDeclar SEMCOL
+    (15) declar -> . funcDeclar
+    (24) call -> . ID
+    (25) call -> . ID POINT call
+    (26) call -> . ID LPARENT RPARENT
+    (27) call -> . ID LPARENT params RPARENT
+    (28) call -> . call POINT call
+    (30) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (31) selectionStmt -> . IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK
+    (32) iterationStmt -> . WHILE LPARENT simpleExpr RPARENT LBRACK suite RBRACK
+    (33) returnStmt -> . RETURN
+    (34) returnStmt -> . RETURN simpleExpr
+    (59) inputStmt -> . READLINE LPARENT RPARENT
+    (60) outputStmt -> . PRINT LPARENT STRING RPARENT
+    (61) lineComment -> . LINE_COMMENT
+    (62) blockComment -> . BLOCK_COMMENT
+    (35) simpleExpr -> . simpleExpr OR andExpr
+    (36) simpleExpr -> . andExpr
+    (16) varDeclar -> . VAR ID ASSIGN STRING
+    (17) varDeclar -> . LET ID ASSIGN STRING
+    (18) varDeclar -> . ID ASSIGN exprStmt
+    (19) funcDeclar -> . FUNC ID LPARENT RPARENT LBRACK suite RBRACK
+    (20) funcDeclar -> . FUNC ID LPARENT params RPARENT LBRACK suite RBRACK
+    (37) andExpr -> . andExpr AND unaryRelExpr
+    (38) andExpr -> . unaryRelExpr
+    (39) unaryRelExpr -> . NOT unaryRelExpr
+    (40) unaryRelExpr -> . relExpr
+    (41) relExpr -> . sumExpr relop sumExpr
+    (42) relExpr -> . sumExpr
+    (49) sumExpr -> . sumExpr sumop term
+    (50) sumExpr -> . term
+    (53) term -> . term mulop opElement
+    (54) term -> . opElement
+    (55) opElement -> . call
+    (56) opElement -> . NUMBER
+
+    ID              shift and go to state 24
+    IF              shift and go to state 23
+    WHILE           shift and go to state 34
+    RETURN          shift and go to state 35
+    READLINE        shift and go to state 14
+    PRINT           shift and go to state 32
+    LINE_COMMENT    shift and go to state 26
+    BLOCK_COMMENT   shift and go to state 18
+    VAR             shift and go to state 33
+    LET             shift and go to state 19
+    FUNC            shift and go to state 27
+    NOT             shift and go to state 13
+    NUMBER          shift and go to state 8
+
+    exprStmt                       shift and go to state 1
+    funcDeclar                     shift and go to state 16
+    opElement                      shift and go to state 11
+    suite                          shift and go to state 117
+    outputStmt                     shift and go to state 4
+    blockComment                   shift and go to state 5
+    returnStmt                     shift and go to state 7
+    term                           shift and go to state 9
+    unaryRelExpr                   shift and go to state 10
+    varDeclar                      shift and go to state 12
+    call                           shift and go to state 28
+    sumExpr                        shift and go to state 3
+    relExpr                        shift and go to state 15
+    inputStmt                      shift and go to state 31
+    selectionStmt                  shift and go to state 29
+    stmt                           shift and go to state 17
+    iterationStmt                  shift and go to state 25
+    simpleExpr                     shift and go to state 6
+    declar                         shift and go to state 20
+    lineComment                    shift and go to state 21
+    andExpr                        shift and go to state 30
+
+state 117
+
+    (31) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite . RBRACK
+
+    RBRACK          shift and go to state 118
+
+
+state 118
+
+    (31) selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .
+
+    ID              reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    IF              reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    WHILE           reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    RETURN          reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    READLINE        reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    PRINT           reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    LINE_COMMENT    reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    BLOCK_COMMENT   reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    VAR             reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    LET             reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    FUNC            reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    NOT             reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    NUMBER          reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    RBRACK          reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+    $end            reduce using rule 31 (selectionStmt -> IF LPARENT simpleExpr RPARENT LBRACK suite RBRACK ELSE LBRACK suite RBRACK .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for POINT in state 24 resolved as shift
+WARNING: shift/reduce conflict for POINT in state 54 resolved as shift
+WARNING: shift/reduce conflict for POINT in state 80 resolved as shift
+WARNING: shift/reduce conflict for POINT in state 87 resolved as shift
