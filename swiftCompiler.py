@@ -65,7 +65,6 @@ def t_NUMBER(t):
 line = r'.*'
 
 t_STRING = r'("' + line + '"|\'' + line + '\')'
-#t_BOOL = r'(true|false)'
 t_LINE_COMMENT = r'//' + line
 t_BLOCK_COMMENT = r'/\*' + line + '\*/'
 t_READLINE = r'readLine'
@@ -132,7 +131,7 @@ def p_suite(p):
 
 def p_stmt(p):
     """stmt : exprStmt
-            | declar SEMCOL
+            | declar
             | call SEMCOL
             | selectionStmt
             | iterationStmt
@@ -153,6 +152,10 @@ def p_declar(p):
 def p_var_declar(p):
     """varDeclar    : VAR ID ASSIGN STRING
                     | LET ID ASSIGN STRING
+                    | VAR ID ASSIGN exprStmt
+                    | LET ID ASSIGN exprStmt
+                    | VAR ID ASSIGN inputStmt
+                    | LET ID ASSIGN inputStmt
                     | ID ASSIGN exprStmt
     """
     pass

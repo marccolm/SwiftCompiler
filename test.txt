@@ -1,0 +1,16 @@
+// Succesful
+var number = 10;
+var input = readLine();
+let thisIsAString = "String";
+if (x == 2){ print("x is equal to 2"); }
+while (x > 0) { x = x + 1 ;}
+if (x >= 3){ while (y <= 10){ x = y * 2 ;}}
+
+
+// Error
+= var number 10;
+readLine() var = x;
+"String" = 9;
+if (x = 2){ print("x is equal to 2"); }
+while (x >>>> 0) { x = x + 1 ;}
+if (x >== 3){ while (y <= 10){ x == y * 2 ;}}
